@@ -1,8 +1,7 @@
 defmodule Mime do
   for line <- File.stream!(Path.join([__DIR__, "mimes.txt"]), [], :line) do
-    [type, rest] = line |> String.split("\t") |> Enum.map(&String.trim(&1))
+    [type, rest] = line |> String.split(~r/\s/, parts: 2) |> Enum.map(&String.trim(&1))
     extensions = String.split(rest, ~r/,\s?/)
-    # IO.inspect(type)
 
     def exts_from_type(unquote(type)), do: unquote(extensions)
     def type_from_ext(ext) when ext in unquote(extensions), do: unquote(type)
