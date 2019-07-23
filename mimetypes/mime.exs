@@ -1,5 +1,7 @@
 defmodule Mime do
-  for line <- File.stream!(Path.join([__DIR__, "mimes.txt"]), [], :line) do
+  @external_resource mimes_path = Path.join([__DIR__, "mimes.txt"])
+
+  for line <- File.stream!(mimes_path, [], :line) do
     [type, rest] = line |> String.split(~r/\s/, parts: 2) |> Enum.map(&String.trim(&1))
     extensions = String.split(rest, ~r/,\s?/)
 
