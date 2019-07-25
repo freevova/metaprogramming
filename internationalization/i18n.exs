@@ -28,3 +28,9 @@ end
 #
 # iex> I18n.t("en", "users.title")
 # "Users"
+#
+# I18n.t("en", "flash.hello", first: "Chris", last: "McCord")
+# "Hello Chris Mccord!"
+#
+# iex> I18n.t("en", "users.title")
+# "Users"
